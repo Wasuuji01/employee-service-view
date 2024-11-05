@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Homepage from './Home/Homepage';
+import About from './Home/About';
+import ContactUs from './Home/ContactUs';
+import EmployeeList from './Employees/EmployeeList'
+import AddEmployee from './Employees/AddEmployee';
+import UpdateEmployee from './Employees/UpdateEmployee';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>  
+    <BrowserRouter>
+      <Routes>
+        <Route index element = {<Login />} /> 
+        <Route path="/login" element = {<Login />} /> 
+        <Route path="/register" element={<Register />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path='/employeesList' element={<EmployeeList />} />
+        <Route path='/addemployee' element={<AddEmployee />} />
+        <Route path='/editEmployee/:id' element={<UpdateEmployee />} />
+      </Routes>
+    </BrowserRouter>
+    </>  
   );
 }
 
